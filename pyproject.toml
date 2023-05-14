@@ -1,0 +1,13 @@
+name = "twitch-clips"
+version = "0.0.1"
+description = "An API for the Clips of twitch"
+authors = [
+    "Timothé Maurice <timtonic@outlook.fr>",
+]
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
