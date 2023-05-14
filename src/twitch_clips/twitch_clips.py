@@ -25,3 +25,6 @@ class TwitchClips:
         self.driver.get(f"https://www.twitch.tv/directory/game/{category}")
         if self.driver.find_element(By.XPATH, "//div[@data-a-target='core-error-message']"):
             raise ValueError(f"{category} does not exist on Twitch")
+
+if __name__ == "__main__":
+    pass

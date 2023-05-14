@@ -1,6 +1,10 @@
 import pytest
+import sys
+from src.twitch_clips import twitch_clips
+
+
 
 
 
 def test_load_a_category():
-    pass
+    twitch_clips.TwitchClips()
