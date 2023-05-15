@@ -9,22 +9,18 @@ class TwitchClips:
         self.language = language
         self.category = None
 
-    @property
-    def category(self):
-        return self.category
-
-    @category.setter
-    def category(self, value: str):
-        self.category = value.lower()
-
     def load_browse_page(self):
         self.driver.get("https://www.twitch.tv/directory")
 
     def load_category_page(self, category: str):
         category = category.lower()
         self.driver.get(f"https://www.twitch.tv/directory/game/{category}")
+        # Check if it's a 404 page
         if self.driver.find_element(By.XPATH, "//div[@data-a-target='core-error-message']"):
             raise ValueError(f"{category} does not exist on Twitch")
+        else:
+            return True
+
 
 if __name__ == "__main__":
     pass

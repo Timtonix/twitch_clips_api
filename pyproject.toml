@@ -1,13 +1,17 @@
-name = "twitch-clips"
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--import-mode=importlib"
+testpaths = [
+    "tests",
+    "integration",
+]
+[project]
+name = "twitch_clips"
 version = "0.0.1"
 description = "An API for the Clips of twitch"
-authors = [
-    "Timothé Maurice <timtonic@outlook.fr>",
-]
-[tool.pytest.ini_options]
-addopts = [
-    "--import-mode=importlib",
-]
+authors = [{author = "Timothé Maurice", email = "timtonic@outlook.fr"}]
+
 [build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
