@@ -9,22 +9,20 @@ class TwitchClips:
     def __init__(self,language: str = "en"):
         self.driver = webdriver.Chrome()
         self.language = language
-        self.category = None
 
     def load_browse_page(self):
         self.driver.get("https://www.twitch.tv/directory")
 
-    def load_category_page(self, category: str):
+    def load_category(self, category: str):
         category = category.lower()
         self.driver.get(f"https://www.twitch.tv/directory/game/{category}")
-        # Check if it's a 404 page
+        # Check if the category exists
         try:
-            self.driver.find_element(By.XPATH, "//div[@data-a-target='core-error-message']")
-            raise ValueError(f"{category} is not a category.")
+            self.driver.find_element(By.CSS_SELECTOR, ".MGmly")
         except NoSuchElementException:
-            # The category exist
-            pass
+            raise NoSuchElementException(f"The category {category}, doesn't exist !")
 
 
 if __name__ == "__main__":
-    pass
+    twitch = TwitchClips()
+    twitch.load_category("dgfg")
